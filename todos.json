@@ -1,0 +1,33 @@
+{
+    "name": "pacman-info",
+    "todos": [
+        {
+            "done": false,
+            "title": "F: Parse pair from pacman -Qi"
+        },
+        {
+            "done": false,
+            "title": "F: Strip str from pair off spaces"
+        },
+        {
+            "done": false,
+            "title": "F: Validate that we can parse every part from info"
+        },
+        {
+            "done": false,
+            "title": "F: Parse Install Reason"
+        },
+        {
+            "done": false,
+            "title": "F: Get all packages that are 'Explicitly installed'"
+        },
+        {
+            "done": false,
+            "title": "F: Create map of 'Explicitly installed' packages"
+        },
+        {
+            "done": false,
+            "title": "L: Test all functions. Get the test units from libs/iterm"
+        }
+    ]
+}
