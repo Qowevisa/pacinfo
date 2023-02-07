@@ -53,7 +53,7 @@ build: $(project_name)
 	@
 
 clean: 
-	-rm $(OBJ)/*.o 2> /dev/null
+	-rm $(sources:%=$(OBJ_F)/%.o) 2> /dev/null
 	-rm $(project_name) 2> /dev/null
 
 full: build clean

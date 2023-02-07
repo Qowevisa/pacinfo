@@ -26,9 +26,9 @@ typedef enum __pacinfo_type {
 } __pacinfo_type;
 
 // Content len should be equal
-// to 2^n - 17, so __pacinfo_str size
+// to 2^n - 18, so __pacinfo_str size
 // will be 2^n.
-#define CONTENT_LEN 1007
+#define CONTENT_LEN 1006
 
 #define NAME_LEN 16
 
