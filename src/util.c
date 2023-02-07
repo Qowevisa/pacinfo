@@ -45,7 +45,7 @@ parse_package(__pacinfo_pkg *pkg, char *package_name)
 void
 debug_line(__pacinfo_str pstr)
 {
-	printf("'%s' :: %d :: '%s'",
+	printf("'%s' :: %d :: '%s'\n",
 		pstr.name,
 		pstr.type,
 		pstr.content
