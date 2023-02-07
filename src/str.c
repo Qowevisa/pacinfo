@@ -61,6 +61,8 @@ parse_pacinfo_str(__pacinfo_str *pstr, const char *source)
 	}
 	// Skipping ':'
 	p++;
+	// Skipping empty space
+	p++;
 	// Getting content
 	for (i = 0; (i < CONTENT_LEN - 1) || *p == '\n'; i++, p++) {
 		pstr->content[i] = *p;
