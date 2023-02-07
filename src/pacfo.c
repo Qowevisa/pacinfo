@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
+#include "../inc/pacfo.h"
 #include "../inc/util.h"
 
 int
@@ -11,7 +12,8 @@ main(int argc, char **argv)
 		exit(1);
 	}
 
-	test(argv[1]);
+	__pacinfo_pkg pkg;
+	parse_package(&pkg, argv[1]);
 
 	return 0;
 }
