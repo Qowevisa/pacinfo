@@ -5,4 +5,10 @@
 void
 parse_package(__pacinfo_pkg *pkg, char *package_name);
 
+void
+debug_line(__pacinfo_str pstr);
+
+void
+debug_package(__pacinfo_pkg pkg);
+
 #endif // __pacinfo__util_h

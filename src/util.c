@@ -41,3 +41,22 @@ parse_package(__pacinfo_pkg *pkg, char *package_name)
 
 	pclose(out);
 }
+
+void
+debug_line(__pacinfo_str pstr)
+{
+	printf("'%s' :: %d :: '%s'",
+		pstr.name,
+		pstr.type,
+		pstr.content
+	);
+}
+
+void
+debug_package(__pacinfo_pkg pkg)
+{
+	for (int i = 0; i < LINES_LEN; i++) {
+		debug_line(pkg.lines[i]);
+	}
+}
+
