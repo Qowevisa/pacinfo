@@ -1,4 +1,6 @@
+#include "../inc/pacfo.h"
 #include "../inc/util.h"
+#include "../inc/str.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,13 +20,12 @@ package_to_info_command(char *arg)
 }
 
 void
-test(char *package_name)
+parse_package(__pacinfo_pkg *pkg, char *package_name)
 {
 	FILE *out;
-	char buf[10240];
+	char buf[sizeof(__pacinfo_str)];
 
 	char *command = package_to_info_command(package_name);
-	printf("%s\n", command);
 
 	out = popen(command, "r");
 	if (out == NULL) {
@@ -32,8 +33,10 @@ test(char *package_name)
 		return;
 	}
 
+	int i = 0;
 	while (fgets(buf, sizeof(buf), out) != NULL) {
 		printf("%s", buf);
+		parse_pacinfo_str(&pkg->lines[i++], buf);
 	}
 
 	pclose(out);
