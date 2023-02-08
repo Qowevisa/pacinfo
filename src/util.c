@@ -35,7 +35,9 @@ parse_package(__pacinfo_pkg *pkg, char *package_name)
 
 	int i = 0;
 	while (fgets(buf, sizeof(buf), out) != NULL) {
-		parse_pacinfo_str(&pkg->lines[i], buf, i);
+		if (i < LINES_LEN) {
+			parse_pacinfo_str(&pkg->lines[i], buf, i);
+		} else { break; }
 		i++;
 	}
 
