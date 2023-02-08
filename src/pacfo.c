@@ -15,5 +15,7 @@ main(int argc, char **argv)
 	__pacinfo_pkg pkg;
 	parse_package(&pkg, argv[1]);
 
+	debug_package(pkg);
+
 	return 0;
 }
