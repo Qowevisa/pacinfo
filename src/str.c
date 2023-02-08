@@ -13,7 +13,7 @@ parse_pacinfo_str(__pacinfo_str *pstr, const char *source, int type)
 	pstr->type = type;
 	// Getting content
 	memset(pstr->content, 0, CONTENT_LEN);
-	 strncat(pstr->content, source+18, CONTENT_LEN - 1);
+	strncat(pstr->content, source+18, CONTENT_LEN - 1);
 	pstr->content[strlen(pstr->content) - 1] = '\0';
 }
 
