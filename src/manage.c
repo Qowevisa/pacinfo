@@ -82,6 +82,7 @@ create_manage_dir()
 		switch (errno) {
 		case EACCES :
 			fprintf(stderr, "ERROR: ~/.config directory does not allow write!");
+			break;
 		default:
 			perror("mkdir");
 		}
