@@ -7,7 +7,7 @@ TEST_BIN_F = tbin
 inc_dir = /usr/local/include
 
 project_name = pacfo
-sources = pacfo util str
+sources = pacfo util str manage
 tests = $(shell ls $(TEST_F) | grep .c | cut -d '.' -f 1)
 
 def: test_all
