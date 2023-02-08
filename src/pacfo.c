@@ -4,6 +4,7 @@
 #include <stddef.h>
 #include "../inc/pacfo.h"
 #include "../inc/util.h"
+#include "../inc/manage.h"
 
 int
 main(int argc, char **argv)
@@ -16,6 +17,8 @@ main(int argc, char **argv)
 	parse_package(&pkg, argv[1]);
 
 	debug_package(pkg);
+
+	create_manage_dir();
 
 	return 0;
 }
