@@ -7,33 +7,6 @@
 #include <errno.h>
 
 static
-int
-is_config_dir_created()
-{
-	// Getting path to ~/.config
-	//
-	// I don't know exactly if I should free this memory
-	char *home = getenv("HOME");
-	//
-	char config_path[1024+16+1] = {0};
-	strncat(config_path, home, 1024);
-	strncat(config_path, "/.config", 16);
-	//
-	DIR* dir = opendir(config_path);
-	if (dir) {
-		/* Directory exists */
-		closedir(dir);
-		return 1;
-	} else if (ENOENT == errno) {
-		/* Directory does not exist. */
-		return 0;
-	} else {
-		/* opendir() failed for some other reason. */
-		return -1;
-	}
-}
-
-static
 inline
 int
 check_home_path_created(const char *path)
@@ -57,6 +30,13 @@ check_home_path_created(const char *path)
 		/* opendir() failed for some other reason. */
 		return -1;
 	}
+}
+
+static
+int
+is_config_dir_created()
+{
+	return check_home_path_created("/.config");
 }
 
 static
