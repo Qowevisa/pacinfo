@@ -34,30 +34,37 @@ is_config_dir_created()
 }
 
 static
+inline
+int
+check_home_path_created(const char *path)
+{
+	// Getting path
+	char *home = getenv("HOME");
+	//
+	char manage_path[2048] = {0};
+	strncat(manage_path, home, 1024);
+	strncat(manage_path, path, 1024);
+	//
+	DIR* dir = opendir(manage_path);
+	if (dir) {
+		/* Directory exists */
+		closedir(dir);
+		return 1;
+	} else if (ENOENT == errno) {
+		/* Directory does not exist. */
+		return 0;
+	} else {
+		/* opendir() failed for some other reason. */
+		return -1;
+	}
+}
+
+static
 int
 is_manage_dir_created()
 {
 	if (is_config_dir_created()) {
-		// Getting path
-		char *home = getenv("HOME");
-		//
-		char manage_path[1024+16+8+1] = {0};
-		strncat(manage_path, home, 1024);
-		strncat(manage_path, "/.config", 16);
-		strncat(manage_path, "/pacfo", 8);
-		//
-		DIR* dir = opendir(manage_path);
-		if (dir) {
-			/* Directory exists */
-			closedir(dir);
-			return 1;
-		} else if (ENOENT == errno) {
-			/* Directory does not exist. */
-			return 0;
-		} else {
-			/* opendir() failed for some other reason. */
-			return -1;
-		}
+		return check_home_path_created("/.config/pacfo");
 	} else {
 		return 0;
 	}
@@ -72,7 +79,7 @@ create_manage_dir()
 	// Getting path
 	char *home = getenv("HOME");
 	//
-	char manage_path[1024+16+8+1] = {0};
+	char manage_path[2048] = {0};
 	strncat(manage_path, home, 1024);
 	strncat(manage_path, "/.config", 16);
 	strncat(manage_path, "/pacfo", 8);
