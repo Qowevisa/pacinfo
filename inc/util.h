@@ -6,6 +6,9 @@ void
 parse_package(__pacinfo_pkg *pkg, char *package_name);
 
 void
+get_all_packages();
+
+void
 debug_line(__pacinfo_str pstr);
 
 void

@@ -45,6 +45,35 @@ parse_package(__pacinfo_pkg *pkg, char *package_name)
 }
 
 void
+get_all_packages()
+{
+	FILE *out;
+	char buf[MAX_STR_LEN];
+
+	out = popen("pacman -Qq", "r");
+	if (out == NULL) {
+		fprintf(stderr, "Error: can't run command!");
+		return;
+	}
+
+	int count = 0;
+	__pacinfo_pkg pkg;
+	while (fgets(buf, sizeof(buf), out) != NULL) {
+		buf[strlen(buf) - 1] = '\0';
+		parse_package(&pkg, buf);
+		count++;
+		printf("%s :: %s : %s\n",
+			pkg.lines[NAME].content,
+			pkg.lines[INSTALL_REASON].name,
+			pkg.lines[INSTALL_REASON].content
+		);
+	}
+	printf("Scanned %d packages!\n", count);
+
+	pclose(out);
+}
+
+void
 debug_line(__pacinfo_str pstr)
 {
 	printf("'%s' :: %d :: '%s'\n",

@@ -9,16 +9,17 @@
 int
 main(int argc, char **argv)
 {
-	if (argc < 2) {
+	if (argc < 1) {
 		exit(1);
 	}
+	if (argv) {}
 
-	__pacinfo_pkg pkg;
-	parse_package(&pkg, argv[1]);
+	// __pacinfo_pkg pkg;
+	// parse_package(&pkg, argv[1]);
 
-	debug_package(pkg);
+	// debug_package(pkg);
 
-	create_manage_dir();
+	get_all_packages();
 
 	return 0;
 }
